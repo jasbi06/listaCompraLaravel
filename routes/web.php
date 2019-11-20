@@ -12,5 +12,33 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Pantalla Principal';
+});
+
+Route::get('/login', function () {
+    return 'Login Usuario';
+});
+
+Route::get('/logout', function () {
+    return 'Logout Usuario';
+});
+
+Route::get('/productos', function () {
+    return 'Listado productos';
+});
+
+Route::get('/productos', function () {
+    return 'Listado productos';
+});
+
+Route::get('/productos/show/{id}', function ($id) {
+    return 'Vista detalle producto ' . $id;
+});
+
+Route::get('/productos/create', function () {
+    return 'Añadir Producto';
+});
+
+Route::get('/productos/edit/{id}', function ($id) {
+    return 'Modificar producto ' . $id;
 });
