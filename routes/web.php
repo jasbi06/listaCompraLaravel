@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return 'Pantalla Principal';
+    return view('home');
 });
 
 Route::get('/login', function () {
-    return 'Login Usuario';
+    return view('auth.login');
 });
 
 Route::get('/logout', function () {
@@ -24,21 +24,17 @@ Route::get('/logout', function () {
 });
 
 Route::get('/productos', function () {
-    return 'Listado productos';
-});
-
-Route::get('/productos', function () {
-    return 'Listado productos';
+    return view('productos.index');
 });
 
 Route::get('/productos/show/{id}', function ($id) {
-    return 'Vista detalle producto ' . $id;
+    return view('productos.show ', array('id'=>$id));
 });
 
 Route::get('/productos/create', function () {
-    return 'Añadir Producto';
+    return view('productos.create');
 });
 
 Route::get('/productos/edit/{id}', function ($id) {
-    return 'Modificar producto ' . $id;
+    return view('productos.create', array('id'=> $id));
 });
