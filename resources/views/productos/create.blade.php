@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 Añadir producto
@@ -20,15 +20,18 @@ Añadir producto
                     </div>
 
                     <div class="form-group">
-                        <input type="number" min="0" max="100" name="precio" placeholder="Precio">
+                        <label for="precio">Precio</label>
+                        <input type="number" min="0" max="100" name="precio" placeholder="Precio" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="categoria" placeholder="Categoria">
+                        <label for="categoria">Categoria</label>
+                        <input type="text" name="categoria" placeholder="Categoria" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <input type="url" name="imagen" placeholder="url de la imagen">
+                        <label for="categoria">Imagen</label>
+                        <input type="url" name="imagen" placeholder="url de la imagen" class="form-control">
                     </div>
 
                     <div class="form-group">
