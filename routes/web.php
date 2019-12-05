@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@getHome');
 
+/*
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -20,11 +20,25 @@ Route::get('/login', function () {
 Route::get('/logout', function () {
     return 'Logout Usuario';
 });
+*/
 
-Route::get('/productos', 'ProductosController@getIndex');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index');
 
-Route::get('/productos/show/{id}', 'ProductosController@getShow')->where('id', '[0-9]+');
+    Route::group(['prefix' => 'productos'], function () {
+        Route::get('/', 'ProductosController@getIndex');
 
-Route::get('/productos/create', 'ProductosController@getCreate');
+        Route::get('/show/{id}', 'ProductosController@getShow')->where('id', '[0-9]+');
 
-Route::get('/productos/edit/{id}', 'ProductosController@getEdit')->where('id', '[0-9]+');
+        Route::get('/create', 'ProductosController@getCreate');
+        Route::post('/create', 'ProductosController@postCreate');
+
+        Route::put('/changeRented/{id}', 'ProductosController@changeRented');
+
+        Route::get('/edit/{id}', 'ProductosController@getEdit')->where('id', '[0-9]+');
+        Route::put('/edit/{id}', 'ProductosController@putEdit');
+    });
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
